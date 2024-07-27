@@ -13,9 +13,10 @@ workflows:
       - name: Build iOS .ipa
         script: |
           flutter build ios --release --no-codesign
+          cd build/ios/iphoneos
           xcodebuild -exportArchive \
-            -archivePath build/ios/archive/Runner.xcarchive \
-            -exportPath build/ios/ipa \
-            -exportOptionsPlist exportOptions.plist
+            -archivePath Runner.xcarchive \
+            -exportPath Runner.ipa \
+            -exportOptionsPlist ../../../../exportOptions.plist
     artifacts:
-      - build/ios/ipa/*.ipa
+      - build/ios/iphoneos/Runner.ipa
